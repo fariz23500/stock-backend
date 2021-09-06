@@ -4,10 +4,10 @@ const app=express();
 const data=require('./StockList.json');
 
 
-app.get("/",function(req,res){
-    const symbol="GOOG";
-    const start="2021-01-04";
-    const end="2021-01-11";
+app.post("/",function(req,res){
+    const symbol=req.body.symbol;
+    const start=req.body.start;
+    const end=req.body.end;
     const requiredData=[];
     // console.log(Number(start.substr(8,2)));
     data.forEach(d => {
