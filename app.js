@@ -2,6 +2,7 @@ const express=require("express");
 const bodyParser=require("body-parser");
 const app=express();
 const data=require('./StockList.json');
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 app.post("/",function(req,res){
