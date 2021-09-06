@@ -3,12 +3,14 @@ const bodyParser=require("body-parser");
 const app=express();
 const data=require('./StockList.json');
 app.use(bodyParser.urlencoded({extended: true}));
-
+let symbol;
+let start;
+let end;
 
 app.post("/",function(req,res){
-    const symbol=req.body.symbol;
-    const start=req.body.start;
-    const end=req.body.end;
+    symbol=req.body.symbol;
+   start=req.body.start;
+    end=req.body.end;
     // const symbol="GOOG";
     // const start="2021-01-12";
     // const end="2021-02-01";
@@ -55,7 +57,9 @@ app.post("/",function(req,res){
    res.send(requiredData); 
 });
 
-
+app.get("/",(req,res)=>{
+    res.send({"symbol":symbol,"start":start,"end":end});
+})
 
 
 
